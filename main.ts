@@ -10,7 +10,7 @@ function createWindow() {
     width: 800
   });
 
-  // and load the index.html of the app.
+  // Load the index.html of the app.
   win.loadFile('./dist/index.html');
 
   // DevTools within Chromium front-end

@@ -4,24 +4,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader'
-          }
-        ]
-      },
-      {
-        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        loader: 'html-loader',
+        test: /\.html$/,
       },
       {
-        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        test: /\.jsx?$/,
+      },
+      {
+        exclude: /node_modules/,
         loader: 'ts-loader',
-        exclude: /node_modules/
+        test: /\.tsx?$/
       }
     ]
   },
@@ -32,6 +27,11 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: [
+      '.js',
+      '.jsx',
+      '.ts',
+      '.tsx'
+    ]
   }
 };
