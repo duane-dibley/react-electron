@@ -11,7 +11,16 @@ module.exports = {
       {
         exclude: /node_modules/,
         loader: 'babel-loader',
-        test: /\.jsx?$/,
+        test: /\.js$/,
+      },
+      {
+        exclude: /node_modules/,
+        test: /\.styl$/,
+        use: [
+          { loader: "style-loader" }, // creates style nodes from JS strings
+          { loader: "css-loader" }, // translates CSS into CommonJS
+          { loader: "stylus-loader" } // compiles Stylus to CSS
+        ]
       },
       {
         exclude: /node_modules/,
@@ -29,7 +38,7 @@ module.exports = {
   resolve: {
     extensions: [
       '.js',
-      '.jsx',
+      // '.styl',
       '.ts',
       '.tsx'
     ]
