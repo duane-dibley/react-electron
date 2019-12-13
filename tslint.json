@@ -6,8 +6,17 @@
   "rules": {
     "arrow-parens": false,
     "no-console": false,
-    "quotemark": [true, "single"],
-    "trailing-comma": false
+    "no-unused-variable": false,
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "trailing-comma": false,
+    "typedef": [
+      true,
+      "call-signature",
+      "property-declaration"
+    ]
   },
   "rulesDirectory": []
 }
