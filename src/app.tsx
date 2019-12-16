@@ -5,8 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import React, { ChangeEvent, Component, ReactNode } from 'react';
 import './app.styl';
-// import Companies from './companies';
-// import Stocks from './stocks';
+import CompanyComponent from './components/CompanyComponent';
+import StockComponent from './components/StockComponent';
 
 interface IState {
   activeTab: number;
@@ -28,15 +28,15 @@ export default class App extends Component<{}> {
     return <div>
       <AppBar position='static'>
         <Tabs value={this.state.activeTab} onChange={this.handleChange.bind(this)}>
-          <Tab label='Companies'></Tab>
-          <Tab label='Stocks'></Tab>
+          <Tab label='Company'></Tab>
+          <Tab label='Stock'></Tab>
         </Tabs>
       </AppBar>
       <TabPanel active={this.state.activeTab} value={0}>
-        Item One
+        <CompanyComponent />
       </TabPanel>
       <TabPanel active={this.state.activeTab} value={1}>
-        Item Two
+        <StockComponent />
       </TabPanel>
     </div>;
   }
