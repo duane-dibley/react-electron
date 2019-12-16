@@ -1,23 +1,22 @@
-import { STOCK_ACTION } from '../actions';
+import { Reducer } from 'redux';
+import IAction, { STOCK_ACTION } from '../actions';
 
-// interface IAction {
-//   data: any;
-//   type: any;
-// }
+interface IState {
+  data: any[];
+}
 
-// interface IState {
-//   data: any;
-// }
-
-export default function stock(state = { data: [] }, action = { data: [], type: '' }): any {
+const reducer: Reducer<IState, IAction> = (state = { data: [] }, action) => {
 
   switch (action.type) {
 
     case STOCK_ACTION:
-      console.log(STOCK_ACTION, action);
       return state;
 
     default:
       return state;
+
   }
-}
+
+};
+
+export default reducer;

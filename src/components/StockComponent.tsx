@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { stockAction } from '../actions/StockActions';
 
 interface IProps {
-  stockAction: any;
+  stockAction: typeof stockAction;
 }
 
 interface IState {

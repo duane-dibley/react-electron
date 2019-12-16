@@ -1,5 +1,5 @@
-import { COMPANY_ACTION } from '.';
+import IAction, { COMPANY_ACTION } from '.';
 
-export function companyAction(): any {
+export function companyAction(): IAction {
   return { type: COMPANY_ACTION, data: [] };
 }

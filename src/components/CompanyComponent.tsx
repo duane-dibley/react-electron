@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { companyAction } from '../actions/CompanyActions';
 
 interface IProps {
-  companyAction: any;
+  companyAction: typeof companyAction;
 }
 
 interface IState {
