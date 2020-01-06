@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import IAction, { COMPANY_ACTION } from '../actions';
+import IAction, { COMPANIES_FETCH_SUCCESS } from '../actions';
 
 interface IState {
   data: [];
@@ -9,7 +9,8 @@ const reducer: Reducer<IState, IAction> = (state = { data: [] }, action) => {
 
   switch (action.type) {
 
-    case COMPANY_ACTION:
+    case COMPANIES_FETCH_SUCCESS:
+      console.log('COMPANIES_FETCH_SUCCESS', { action });
       return state;
 
     default:

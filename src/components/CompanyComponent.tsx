@@ -1,11 +1,15 @@
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import React, { Component, ReactNode } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { companyAction } from '../actions/CompanyActions';
+import { companiesFetch } from '../actions/CompanyActions';
 
 interface IProps {
-  companyAction: typeof companyAction;
+  // actions: IActions;
+  companiesFetch: typeof companiesFetch;
 }
 
 interface IState {
@@ -14,14 +18,30 @@ interface IState {
 
 export default connect(
   (state: IState) => ({}),
-  (dispatch: Dispatch) => bindActionCreators({ companyAction }, dispatch)
+  (dispatch: Dispatch) => bindActionCreators({ companiesFetch }, dispatch)
 )(
   class CompanyComponent extends Component<IProps, IState> {
 
     public render(): ReactNode {
-      return <Button variant='contained' color='primary' onClick={this.props.companyAction}>
-        Company
-    </Button>;
+      return <div>
+
+        <FormControl>
+          <InputLabel htmlFor='search'>Search</InputLabel>
+          <Input id='search' />
+          <Button variant='contained' color='primary' onClick={this.props.companiesFetch}>
+            Search
+          </Button>
+        </FormControl>
+
+        {/* <FormControl>
+          <InputLabel htmlFor='profile'>Company Profile</InputLabel>
+          <Input id='profile' />
+          <Button variant='contained' color='primary' onClick={this.props.companyProfile}>
+            Company Profile
+          </Button>
+        </FormControl> */}
+
+      </div>;
     }
 
   }

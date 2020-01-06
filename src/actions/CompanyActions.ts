@@ -1,5 +1,9 @@
-import IAction, { COMPANY_ACTION } from '.';
+import IAction, { COMPANIES_FETCH, COMPANIES_FETCH_SUCCESS } from '.';
 
-export function companyAction(): IAction {
-  return { type: COMPANY_ACTION, data: [] };
+export function companiesFetch(): IAction {
+  return { type: COMPANIES_FETCH };
+}
+
+export function companiesFetchSuccess(records: any): IAction {
+  return { type: COMPANIES_FETCH_SUCCESS, data: records };
 }

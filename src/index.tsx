@@ -2,12 +2,19 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import App from './app';
 import reducer from './reducers';
+import rootSaga from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  reducer
+  reducer,
+  applyMiddleware(sagaMiddleware)
 );
+
+sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
@@ -15,19 +22,3 @@ render(
   </Provider>,
   document.getElementById('appdiv')
 );
-
-// const sagaMiddleWare = createSagaMiddleware();
-
-// const store = createStore(
-//   reducer,
-//   applyMiddleware(sagaMiddleWare, logger)
-// );
-
-// sagaMiddleWare.run(saga);
-
-// render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById("appdiv")
-// );

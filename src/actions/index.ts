@@ -1,9 +1,9 @@
-const COMPANY_ACTION = 'COMPANY_ACTION';
-const STOCK_ACTION = 'STOCK_ACTION';
-
-export { COMPANY_ACTION, STOCK_ACTION };
+export const COMPANIES_FETCH = 'COMPANIES_FETCH';
+export const COMPANIES_FETCH_SUCCESS = 'COMPANIES_FETCH_SUCCESS';
+//
+export const STOCK_ACTION = 'STOCK_ACTION';
 
 export default interface IAction {
-  data: any[]
+  data?: any[];
   type: string;
 }
