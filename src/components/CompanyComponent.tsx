@@ -26,20 +26,15 @@ export default connect(
       return <div>
 
         <FormControl>
+
           <InputLabel htmlFor='search'>Search</InputLabel>
           <Input id='search' />
+
           <Button variant='contained' color='primary' onClick={this.props.companiesFetch}>
             Search
           </Button>
-        </FormControl>
 
-        {/* <FormControl>
-          <InputLabel htmlFor='profile'>Company Profile</InputLabel>
-          <Input id='profile' />
-          <Button variant='contained' color='primary' onClick={this.props.companyProfile}>
-            Company Profile
-          </Button>
-        </FormControl> */}
+        </FormControl>
 
       </div>;
     }
