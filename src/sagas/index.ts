@@ -1,29 +1,28 @@
 import { all, AllEffect, call, CallEffect, put, PutEffect, takeEvery, takeLatest } from 'redux-saga/effects';
-import { COMPANIES_FETCH, COMPANIES_FETCH_SUCCESS } from '../actions';
-import { companiesFetchSuccess } from '../actions/CompanyActions';
+import { COMPANIES_SEARCH, COMPANIES_SEARCH_SUCCESS } from '../actions';
 import headers from './headers';
 
-function* onCompaiesSearch(): Generator<any, void, unknown> {
+function* search(): Generator<any, any, any> {
   yield takeLatest(
-    COMPANIES_FETCH,
-    onFetchCompanies
+    COMPANIES_SEARCH,
+    companiesSearch
   );
 }
 
 //
 
-function* companiesSearch(params: any): Generator<any, any, any> {
+function* searchCompanies(params: any): Generator<any, any, any> {
   return yield fetch('https://api.companieshouse.gov.uk/search?q=test', { headers })
     .then(res => res.json())
-    .catch(err => console.error('promise catch', err));
+    .catch(err => console.error('companiesSearch catch', err));
 }
 
-function* onFetchCompanies(): Generator<CallEffect<unknown> | PutEffect<any>, void, unknown> {
-  let response: any = null;
-  // let responseBody: any = null;
+//
+
+function* companiesSearch(): Generator {
+  let response: any;
 
   try {
-    // RgLMHWQ3NsjYufoQ49baXO4DA5w_6QRCxpCezx6V
     // GET https://api.companieshouse.gov.uk/search
     // GET https://api.companieshouse.gov.uk/search/companies
     // GET https://api.companieshouse.gov.uk/search/officers
@@ -36,7 +35,7 @@ function* onFetchCompanies(): Generator<CallEffect<unknown> | PutEffect<any>, vo
     //   }
     // });
 
-    response = yield call(companiesSearch, { q: 'test' });
+    response = yield call(searchCompanies, { q: 'test' });
   } catch (e) {
     // TODO - set default error handler
     // yield put(fetchFailed(e));
@@ -44,12 +43,12 @@ function* onFetchCompanies(): Generator<CallEffect<unknown> | PutEffect<any>, vo
     return;
   }
 
-  yield put(companiesFetchSuccess(response.items));
+  yield put({ type: COMPANIES_SEARCH_SUCCESS, data: response.items });
 }
 
-export default function* rootSaga(): Generator<AllEffect<Generator<any, void, unknown>>, void, unknown> {
+export default function* rootSaga(): Generator<any, any, any> {
   yield all([
-    onCompaiesSearch()
+    search()
   ]);
 }
 

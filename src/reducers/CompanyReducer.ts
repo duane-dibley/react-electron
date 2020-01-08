@@ -1,17 +1,13 @@
 import { Reducer } from 'redux';
-import IAction, { COMPANIES_FETCH_SUCCESS } from '../actions';
+import IAction, { COMPANIES_SEARCH_SUCCESS } from '../actions';
+import { ICompanyState } from '../model';
 
-interface IState {
-  data: [];
-}
-
-const reducer: Reducer<IState, IAction> = (state = { data: [] }, action) => {
+const reducer: Reducer<ICompanyState, IAction> = (state = { listOptions: [] }, action) => {
 
   switch (action.type) {
 
-    case COMPANIES_FETCH_SUCCESS:
-      console.log('COMPANIES_FETCH_SUCCESS', { action });
-      return state;
+    case COMPANIES_SEARCH_SUCCESS:
+      return Object.assign(state, { listOptions: action.data });
 
     default:
       return state;

@@ -1,11 +1,8 @@
 import { Reducer } from 'redux';
 import IAction, { STOCK_ACTION } from '../actions';
+import { IStockState } from '../model';
 
-interface IState {
-  data: any[];
-}
-
-const reducer: Reducer<IState, IAction> = (state = { data: [] }, action) => {
+const reducer: Reducer<IStockState, IAction> = (state = { stockdata: [] }, action) => {
 
   switch (action.type) {
 

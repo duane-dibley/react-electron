@@ -1,8 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
+import { IAppState } from '../model';
 import company from './CompanyReducer';
 import stock from './StockReducer';
 
-const rootReducer = combineReducers(
+const rootReducer: Reducer<IAppState> = combineReducers(
   { company, stock }
 );
 

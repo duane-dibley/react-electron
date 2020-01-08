@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   module: {
@@ -36,6 +37,9 @@ module.exports = {
     })
   ],
   resolve: {
+    // alias: {
+    //   model$: path.resolve(__dirname, 'src/model.ts')
+    // },
     extensions: [
       '.js',
       // '.styl',
