@@ -14,7 +14,7 @@
   "exclude": [
     "node_modules"
   ],
-  "paths": {
-    "model": ["src/model"]
-  }
+  // "paths": {
+  //   "model": ["src/model.ts"]
+  // }
 }

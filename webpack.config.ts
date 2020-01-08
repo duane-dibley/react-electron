@@ -1,7 +1,19 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const path = require('path');
+import HtmlWebPackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import webpack from 'webpack';
 
-module.exports = {
+const config: webpack.Configuration = {
+  devServer: {
+    port: 5000,
+    proxy: {
+      '/companies': {
+        changeOrigin: true,
+        pathRewrite: { '^/companies': '' },
+        secure: false,
+        target: 'https://api.companieshouse.gov.uk'
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -18,9 +30,9 @@ module.exports = {
         exclude: /node_modules/,
         test: /\.styl$/,
         use: [
-          { loader: "style-loader" }, // creates style nodes from JS strings
-          { loader: "css-loader" }, // translates CSS into CommonJS
-          { loader: "stylus-loader" } // compiles Stylus to CSS
+          { loader: 'style-loader' }, // creates style nodes from JS strings
+          { loader: 'css-loader' }, // translates CSS into CommonJS
+          { loader: 'stylus-loader' } // compiles Stylus to CSS
         ]
       },
       {
@@ -32,8 +44,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
+      filename: './index.html',
       template: './src/index.html',
-      filename: './index.html'
     })
   ],
   resolve: {
@@ -48,3 +60,5 @@ module.exports = {
     ]
   }
 };
+
+export default config;
