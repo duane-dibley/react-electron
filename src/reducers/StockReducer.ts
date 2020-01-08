@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
-import IAction, { STOCK_ACTION } from '../actions';
-import { IStockState } from '../model';
+import { STOCK_ACTION } from '../actions';
+import { IAction, IStockState } from '../model';
 
 const reducer: Reducer<IStockState, IAction> = (state = { stockdata: [] }, action) => {
 

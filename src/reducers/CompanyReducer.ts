@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
-import IAction, { COMPANIES_SEARCH_SUCCESS } from '../actions';
-import { ICompanyState } from '../model';
+import { COMPANIES_SEARCH_SUCCESS } from '../actions';
+import { IAction, ICompanyState } from '../model';
 
 const reducer: Reducer<ICompanyState, IAction> = (state = { listOptions: [] }, action) => {
 

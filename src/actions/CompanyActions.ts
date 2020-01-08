@@ -1,5 +1,6 @@
-import IAction, { COMPANIES_SEARCH } from '.';
+import { COMPANIES_SEARCH } from '.';
+import { IAction } from '../model';
 
 export function companiesSearch(): IAction {
-  return { type: COMPANIES_SEARCH, data: null };
+  return { type: COMPANIES_SEARCH };
 }

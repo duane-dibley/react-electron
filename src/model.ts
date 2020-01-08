@@ -1,3 +1,8 @@
+export interface IAction {
+  data?: any;
+  type: string;
+}
+
 export interface IAppState {
   company: ICompanyState;
   stock: IStockState;
